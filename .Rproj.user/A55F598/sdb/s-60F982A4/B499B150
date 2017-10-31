@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\n\n# UI\nui <- fluidPage(\n  # leaflet\n  tags$head(tags$link(\n    href=\"//unpkg.com/leaflet@1.2.0/dist/leaflet.css\",\n    rel=\"stylesheet\"),\n    integrity=\"sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==\",\n    crossorigin=\"\"\n  ),\n  tags$head(tags$script(\n    src=\"//unpkg.com/leaflet@1.2.0/dist/leaflet.js\",\n    integrity=\"sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==\",\n    crossorigin=\"\"\n  )),\n  \n  # d3\n  tags$head(tags$script(src=\"//d3js.org/d3.v4.min.js\")),\n  tags$head(tags$script(src=\"//unpkg.com/topojson@3\")),\n  \n  # flowmap\n  tags$head(tags$script(src=\"flowmap.js\")),\n  \n  # rest UIs\n  actionButton(\"newData\", \"New data\"),\n  div(id=\"flowmap0\", class=\"flowmap-output\", style=\"height:300px;\"),\n  div(id=\"flowmap1\", class=\"flowmap-output\", style=\"height:300px;\")\n)\n\n# Server\nrenderList <- function(expr, env=parent.frame(), quoted=FALSE) {\n  func <- exprToFunction(expr, env, quoted)\n\n  function() {\n    val <- func()\n    as.vector(val)\n  }\n}\n\nserver <- function(input, output) {\n  data <- eventReactive(input$newData, {\n    rnorm(10)\n  })\n  \n  output$flowmap0 <- renderList({\n    if(input$newData == 0) {\n      rnorm(10)\n    } else {\n      data()\n    }\n  })\n  output$flowmap1 <- renderList({\n    if(input$newData == 0) {\n      rnorm(10)\n    } else {\n      data()\n    }\n  })\n}\n\nshinyApp(ui, server)\n",
+    "created" : 1507458605671.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2421542594",
+    "id" : "B499B150",
+    "lastKnownWriteTime" : 1507523335,
+    "last_content_update" : 1507523335764,
+    "path" : "~/Projects/shiny-test/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,12 @@
+name: shiny-flow
+title:
+username:
+account: igo700
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 224824
+bundleId: 1025101
+url: https://igo700.shinyapps.io/shiny-flow/
+when: 1507900669.60645
+asMultiple: FALSE
+asStatic: FALSE
